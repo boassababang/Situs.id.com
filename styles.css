@@ -1,0 +1,253 @@
+/* Basic layout and responsive styles for the data website */
+:root{
+  --bg:#f7f8fb;
+  --card:#ffffff;
+  --accent:#0b69ff;
+  --muted:#666;
+  --max-width:1100px;
+  /* Header poster: set a URL here or override per-page with an inline style.
+     Example override in HTML: <main class="hero" style="--header-poster: url(\'images/my-poster.jpg\')"> */
+  --header-poster: url('https://picsum.photos/seed/header/1600/640');
+}
+*{box-sizing:border-box}
+body{font-family:Segoe UI, Roboto, Arial, sans-serif;background:var(--bg);color:#111;margin:0;line-height:1.4}
+.container{max-width:var(--max-width);margin:0 auto;padding:1rem}
+.site-header{background:var(--card);border-bottom:1px solid #e6e9ef}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.logo-thumb{width:56px;height:56px;flex:0 0 56px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.logo-thumb svg{display:block;width:56px;height:56px}
+.logo-thumb img{display:block;width:56px;height:56px;object-fit:cover;border-radius:8px}
+.brand-text .site-title{font-size:1rem;margin:0}
+.brand-text .tagline{margin:0;font-size:0.8rem;color:var(--muted)}
+
+/* logo animation hint */
+.logo-animate{transition:transform .4s ease}
+.brand:hover .logo-animate{transform:scale(1.06) rotate(-3deg)}
+.site-title{margin:0;font-size:1.1rem}
+.nav{list-style:none;margin:0;padding:0;display:flex;gap:0.5rem}
+.nav a{display:inline-block;padding:0.5rem 0.75rem;color:var(--accent);text-decoration:none}
+.nav a[aria-current="page"]{font-weight:600}
+.hero{padding:3rem 0;background-color:transparent}
+
+/* Hero uses a configurable poster image (via --header-poster). The gradient overlay
+   improves text contrast; change the image by editing the CSS variable. */
+.hero{
+  background-image: linear-gradient(rgba(3,7,18,0.35), rgba(3,7,18,0.15)), var(--header-poster);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  min-height: 320px;
+  display:flex;
+  align-items:center;
+}
+.hero .container{position:relative;z-index:2}
+.hero h2{margin-top:0}
+.btn-cta,.btn-primary{display:inline-block;padding:0.6rem 1rem;border-radius:6px;text-decoration:none}
+.btn-cta{background:var(--accent);color:#fff}
+.btn-primary{background:#fff;border:1px solid var(--accent);color:var(--accent)}
+.features{padding:1.5rem 0}
+.form-page{padding:1.5rem 0}
+.form-page{padding:1.5rem 0}
+label{display:block;margin-top:0.75rem;font-weight:600}
+input[type="text"],input[type="email"],input[type="password"],input[type="tel"],input[type="date"]{width:100%;padding:0.6rem;border:1px solid #d6dae6;border-radius:6px;margin-top:0.25rem}
+.form-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+.form-actions{margin-top:1rem}
+.age-display{margin-top:0.75rem;font-weight:600;color:var(--muted)}
+.site-footer{padding:1rem 0;background:transparent;color:var(--muted);border-top:1px solid #eee}
+.data-table{width:100%;border-collapse:collapse;margin-top:1rem;background:var(--card)}
+.data-table th,.data-table td{padding:0.6rem;border-bottom:1px solid #eee;text-align:left}
+
+/* Gallery styles */
+.gallery-section{padding:1.5rem 0}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.gallery-item{background:var(--card);border-radius:8px;overflow:hidden;display:block;box-shadow:0 1px 4px rgba(16,24,40,0.06)}
+.gallery-item img{width:100%;height:160px;object-fit:cover;display:block;transition:transform .25s ease}
+.gallery-item:hover img{transform:scale(1.03)}
+.muted{color:var(--muted);margin-top:0.25rem}
+
+/* News & Ads layout */
+.news-ads{display:block;margin:2rem auto;gap:1rem}
+.news-main{max-width:780px}
+.news-list{display:grid;gap:12px}
+.news-card{background:var(--card);padding:12px;border-radius:8px;box-shadow:0 1px 6px rgba(16,24,40,0.04)}
+.news-card h4{margin:0 0 6px}
+.news-card p{margin:0;color:var(--muted)}
+.sidebar{margin-top:1rem}
+.ad-slot{background:#fff;border:1px dashed #d6dae6;padding:12px;border-radius:8px;text-align:center;margin-bottom:12px}
+.ad-placeholder{height:120px;display:flex;align-items:center;justify-content:center;color:#777}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:999}
+.lightbox[aria-hidden="false"]{display:flex}
+.lb-image-wrap{max-width:90%;max-height:80%}
+.lb-image-wrap img{max-width:100%;max-height:100%;border-radius:6px;box-shadow:0 8px 40px rgba(2,6,23,0.6)}
+.lb-close,.lb-prev,.lb-next{position:fixed;background:transparent;border:none;color:#fff;font-size:28px;cursor:pointer;z-index:1000}
+.lb-close{top:18px;right:22px}
+.lb-prev{left:18px;top:50%;transform:translateY(-50%)}
+.lb-next{right:18px;top:50%;transform:translateY(-50%)}
+
+
+/* Features + side articles */
+.features-news{display:block}
+.features-news .features-left{margin-bottom:12px}
+.features-news .features-right{background:var(--card);padding:12px;border-radius:8px;box-shadow:0 1px 6px rgba(16,24,40,0.04)}
+.features-left ul{padding-left:1.1rem}
+.side-article{padding:6px 0;border-bottom:1px solid #f1f3f7}
+.side-article:last-child{border-bottom:none}
+.side-article a{font-weight:600;color:var(--accent);text-decoration:none}
+.side-article time{display:block;color:var(--muted);font-size:0.85rem}
+.more-link{margin-top:8px}
+
+/* Article thumbnail grid for aside */
+.article-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.article-card{display:block;background:transparent;border-radius:8px;overflow:hidden;text-decoration:none;color:inherit}
+.article-card .thumb{width:100%;height:110px;display:block;object-fit:cover;border-radius:6px;background:#eee}
+.article-card h4{font-size:0.9rem;margin:8px 0 0;color:var(--accent)}
+.article-card p{font-size:0.8rem;color:var(--muted);margin:4px 0 0}
+.features-right .article-grid{margin-top:6px}
+
+@media(min-width:900px){
+  .article-card .thumb{height:120px}
+}
+
+/* Article page */
+.article-page article{background:var(--card);padding:1.25rem;border-radius:8px;box-shadow:0 1px 6px rgba(16,24,40,0.04)}
+.article-page h2{margin-top:0}
+.article-page .meta{color:var(--muted);margin-bottom:0.75rem}
+
+/* Two-column layout for article pages: text left, image right */
+.article-page article{
+  display:grid;
+  /* center the article block and constrain overall width for readable measure */
+  max-width:960px;
+  margin:0 auto;
+  /* allow a significantly wider image column for more prominent photos */
+  grid-template-columns: minmax(0,1fr) minmax(180px,480px);
+  gap:20px;
+  align-items:start;
+  padding:1rem;
+}
+.article-page article > p{margin:0 0 0.9rem}
+.article-page article h2,.article-page article .meta{grid-column:1}
+.article-page article > p:first-of-type{grid-column:2;margin:0;display:flex;align-items:center;justify-content:center;padding:0}
+.article-page article > p:first-of-type img{
+  width:100%;
+  height:auto;
+  max-height:420px;
+  display:block;
+  object-fit:cover;
+  border-radius:6px;
+  box-shadow:0 10px 30px rgba(2,6,23,0.16);
+}
+
+/* Article-specific thumbnail override */
+.article-thumb-wrap{display:flex;align-items:center;justify-content:center;padding:0}
+.article-thumb{width:100%;max-width:420px;height:auto;object-fit:cover;border-radius:6px;box-shadow:0 8px 26px rgba(2,6,23,0.14);}
+
+/* Ensure the thumbnail can grow to better match reading column on larger screens */
+@media(min-width:1000px){
+  .article-thumb{max-width:480px}
+}
+/* Apply the same editorial sizing and treatment to any image inside article pages
+   so pages without explicit markup still get consistent, centered images. */
+.article-page article img,
+.article-page article .article-thumb,
+.article-page article .article-thumb-wrap img,
+.article-content img,
+article .article-content img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:480px;
+  max-height:520px;
+  margin:0 auto 1.25rem;
+  object-fit:cover;
+  border-radius:6px;
+  box-shadow:0 8px 26px rgba(2,6,23,0.14);
+}
+
+/* Utility: allow blocks of text to occupy the side column (right) of the article layout.
+   Use <div class="side-text">...</div> or add class="side-text" to a paragraph. */
+.article-page article .side-text,
+.article-page article .article-side {
+  grid-column:2;
+  max-width:60ch; /* keep readable measure even in side column */
+  margin:0 auto 1rem;
+  text-align:left;
+  line-height:1.72;
+  font-size:0.98rem;
+  color:#111;
+  text-justify:inter-word;
+}
+
+/* On narrow viewports the layout collapses to one column and side text flows inline */
+@media(max-width:700px){
+  .article-page article .side-text,
+  .article-page article .article-side{ grid-column:1; max-width:100%; }
+}
+.article-page article > p:not(:first-of-type),
+.article-page article > div,
+.article-page article > section{grid-column:1}
+.article-page article p{line-height:1.72;text-align:justify;color:#111;font-size:0.98rem;text-justify:inter-word}
+
+/* Limit text measure to a comfortable reading width */
+.article-page article > p:not(:first-of-type){
+  max-width:60ch;
+}
+
+@media(max-width:700px){
+  .article-page article{grid-template-columns:1fr;padding:0.8rem}
+  .article-page article > p:first-of-type{grid-column:1}
+  .article-page article > p:first-of-type img{max-height:220px}
+}
+
+.article-page article p{line-height:1.72;text-align:justify;color:#111;font-size:0.98rem;text-justify:inter-word}
+
+@media(min-width:1200px){
+  .article-page article > p:first-of-type img{max-height:520px}
+}
+
+@media(max-width:700px){
+  .article-page article{grid-template-columns:1fr}
+  .article-page article > p:first-of-type{grid-column:1}
+}
+
+@media(min-width:700px){
+  .site-header .container{padding:1rem 2rem}
+  .hero{padding:4rem 0}
+  .form-grid{grid-template-columns:1fr 320px}
+  .news-ads{display:grid;grid-template-columns:1fr 320px}
+}
+
+/* News editor & viewer modal */
+.editor-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);z-index:1200}
+.editor-modal[aria-hidden="false"]{display:flex}
+.editor-panel{background:var(--card);width:min(820px,96%);max-height:90vh;overflow:auto;padding:16px;border-radius:10px;box-shadow:0 12px 40px rgba(2,6,23,0.3)}
+.editor-panel h3{margin-top:0}
+.editor-close{position:relative;float:right;background:transparent;border:none;font-size:24px;cursor:pointer}
+.editor-panel label{display:block;margin-top:0.75rem;font-weight:600}
+.editor-panel input,.editor-panel textarea{width:100%;padding:0.5rem;border:1px solid #d6dae6;border-radius:6px}
+.editor-content{min-height:160px;border:1px solid #e6e9ef;padding:10px;border-radius:6px;background:#fff}
+.viewer-panel .viewer-image img{max-width:100%;border-radius:6px;margin:8px 0}
+.viewer-content{margin-top:8px;color:#111}
+.editor-cancel{margin-left:8px}
+
+/* Share UI and preview card */
+.share-bar{display:flex;align-items:center;gap:12px;margin-top:12px}
+.share-preview{display:flex;gap:12px;align-items:center;background:#fff;border-radius:8px;padding:8px;border:1px solid #eef2f7;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+.share-preview img{width:84px;height:64px;object-fit:cover;border-radius:6px;flex:0 0 84px}
+.share-preview .meta{display:flex;flex-direction:column;gap:4px}
+.share-preview .meta .title{font-weight:700;color:#0b69ff;font-size:0.95rem}
+.share-preview .meta .by{font-size:0.85rem;color:var(--muted)}
+.share-preview .meta .date{font-size:0.8rem;color:#888}
+.share-buttons{display:flex;gap:8px;margin-left:auto}
+.share-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:1px solid #e6e9ef;background:#fff;cursor:pointer;text-decoration:none;color:inherit;font-weight:600}
+.share-btn .icon{font-size:16px}
+.share-btn.whatsapp{background:#25D366;color:#fff;border:none}
+.share-btn.facebook{background:#1877f2;color:#fff;border:none}
+
+@media(max-width:700px){
+  .share-bar{flex-direction:column;align-items:stretch}
+  .share-buttons{margin-left:0;justify-content:flex-end}
+}
